@@ -3,6 +3,7 @@
 export const initialState = {
     counter: 0
 }
+//remark
 function reducer1(state = initialState, action) {
     switch (action.type) {
         case 'INCREASE_COUNTER':
