@@ -15,9 +15,9 @@ import reducer from './reducers'
 //import all reducers from index.js in reducers folder
 
 //how to create store
-const mystore = createStore(reducer);
+export const mystore = createStore(reducer);
+console.log(mystore.getState())
 //how to create store
-
 
 //my entry point for access to store from all components
 const Myentrypoint = () =>     

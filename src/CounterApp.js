@@ -7,18 +7,18 @@ import {
     TouchableOpacity
 } from "react-native";
 import { connect } from 'react-redux'
+
 class CounterApp extends Component {
-
-
     render() {
+        
         return (
             <View style={styles.container}>
-                <View style={{ flexDirection: 'row', width: 200, justifyContent: 'space-around' }}>
-                    <TouchableOpacity onPress={() => this.props.increaseCounter()}>
+                <View style={{ flexDirection: 'column', width: 200, justifyContent: 'space-around' }}>
+                    <TouchableOpacity onPress={() => this.props.increaseCounter(this.props.counter)}>
                         <Text style={{ fontSize: 20 }}>Increase</Text>
                     </TouchableOpacity>
                     <Text style={{ fontSize: 20 }}>{this.props.counter}</Text>
-                    <TouchableOpacity onPress={() => this.props.decreaseCounter()}>
+                    <TouchableOpacity onPress={() => this.props.decreaseCounter(this.props.counter)}>
                         <Text style={{ fontSize: 20 }}>Decrease</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.resetCounter()}>
@@ -28,18 +28,23 @@ class CounterApp extends Component {
             </View>
         );
     }
+    
 }
 
 function mapStateToProps(state) {
+    
+    console.log(mystore.getState())
     return {
-        counter: state.counter
+         counter: state.reducer1.counter
     }
 }
 
 function mapDispatchToProps(dispatch) {
+    
     return {
-        increaseCounter: () => dispatch(increaseaction()),
-        decreaseCounter: () => dispatch(decreaseaction()),
+        
+        increaseCounter: (counter) => dispatch(increaseaction(counter)),
+        decreaseCounter: (counter) => dispatch(decreaseaction(counter)),
         resetCounter: () => dispatch(resetaction()),
     }
 }

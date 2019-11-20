@@ -9,6 +9,8 @@ function reducer1(state = initialState, action) {
             return { counter: action.payload }
         case 'DECREASE_COUNTER':
             return { counter: action.payload }
+            case 'RESET':
+            return { counter: action.payload }
     }
     return state
 }

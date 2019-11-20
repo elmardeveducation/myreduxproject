@@ -1,23 +1,24 @@
-export const increaseaction = () => (
+export const increaseaction = value => (
     {
         type: 'INCREASE_COUNTER',
-        payload: state.counter + 1
+        payload: value + 1
 
     }
     )
 
-export const decreaseaction = () => (
+export const decreaseaction = value => (
     {
         type: 'DECREASE_COUNTER',
-        payload: state.counter - 1
+        payload: value - 1
 
     }
     )
 
-    export const resetaction = () => (
+    export const resetaction= () => (
         {
             type: 'RESET',
             payload: 0
     
         }
+        
         )
