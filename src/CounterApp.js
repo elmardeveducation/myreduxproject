@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import { increaseaction, decreaseaction, resetaction } from '../actions/action'
 import {
     View,
@@ -7,6 +8,7 @@ import {
     TouchableOpacity
 } from "react-native";
 import { connect } from 'react-redux'
+
 
 class CounterApp extends Component {
     render() {
@@ -32,13 +34,24 @@ class CounterApp extends Component {
 }
 
 function mapStateToProps(state) {
+    //console.log('mystate', state)
     
-    console.log(mystore.getState())
     return {
          counter: state.reducer1.counter
     }
 }
-
+ /* export const myLogger=(store)=>(next)=>(action)=>{
+    console.log('Logged action', action)
+    console.log ('mystate from myLogger', store.reducer1.getState())
+    next (action)
+} 
+     */
+/* export const myLogger=(state)=>{
+    console.log('My state from mylogger', mystore.getState())
+  
+    }
+ */
+    
 function mapDispatchToProps(dispatch) {
     
     return {
