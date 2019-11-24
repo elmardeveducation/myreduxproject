@@ -2,9 +2,9 @@ import React from 'react'
 import {AppRegistry} from 'react-native';
 
 //import Redux libraries
-import { createStore, applyMiddleware, compose } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider  } from 'react-redux'
-// import logger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import { myLogger } from './src/CounterApp';
 import thunk from 'redux-thunk'
 
@@ -23,7 +23,8 @@ import promise from 'redux-promise-middleware';
 
 
 //how to create store
-export const mystore = createStore(reducer, applyMiddleware(myLogger));
+// Attention for REDUX0LOGGER: createLogger must be the last middleware in chain, otherwise it will log thunk and promise, not actual actions (#20).
+export const mystore = createStore(reducer, applyMiddleware(myLogger, createLogger()));
 console.log(mystore.getState())
 //how to create store
 
