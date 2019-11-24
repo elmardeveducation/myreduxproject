@@ -23,7 +23,7 @@ import promise from 'redux-promise-middleware';
 
 
 //how to create store
-export const mystore = createStore(reducer, applyMiddleware(thunk, myLogger()));
+export const mystore = createStore(reducer, applyMiddleware(myLogger));
 console.log(mystore.getState())
 //how to create store
 
