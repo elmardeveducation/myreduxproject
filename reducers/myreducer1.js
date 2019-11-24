@@ -1,7 +1,8 @@
 
 
 export const initialState = {
-    counter: 0
+    counter: 0,
+    data: []
 }
 //remark
 function reducer1(state = initialState, action) {
@@ -11,7 +12,8 @@ function reducer1(state = initialState, action) {
         case 'DECREASE_COUNTER':
             return { counter: action.payload }
             case 'RESET':
-            return { counter: action.payload }
+            return { counter: action.payload,
+            data: action.data  }
     }
     return state
 }

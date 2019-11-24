@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { increaseaction, decreaseaction, resetaction } from '../actions/action'
+import { increaseaction, decreaseaction, resetaction, getMydata } from '../actions/action'
 import {
     View,
     Text,
@@ -23,7 +23,7 @@ class CounterApp extends Component {
                     <TouchableOpacity onPress={() => this.props.decreaseCounter(this.props.counter)}>
                         <Text style={{ fontSize: 20 }}>Decrease</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.resetCounter()}>
+                    <TouchableOpacity onPress={() => this.props.getmydata(this.props.data)}>
                         <Text style={{ fontSize: 20 }}>Reset</Text>
                     </TouchableOpacity>
                 </View>
@@ -37,7 +37,7 @@ function mapStateToProps(state) {
     //console.log('mystate', state)
     
     return {...state,
-         counter: state.reducer1.counter
+         counter: state.reducer1.counter, data : state.reducer1.data
     }
 }
  /* export const myLogger=(store)=>(next)=>(action)=>{
@@ -67,7 +67,7 @@ function mapDispatchToProps(dispatch) {
         
         increaseCounter: (counter) => dispatch(increaseaction(counter)),
         decreaseCounter: (counter) => dispatch(decreaseaction(counter)),
-        resetCounter: () => dispatch(resetaction()),
+        getmydata: (data) => dispatch(getMydata(data)) 
     }
 }
 
