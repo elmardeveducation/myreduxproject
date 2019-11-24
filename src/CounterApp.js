@@ -36,7 +36,7 @@ class CounterApp extends Component {
 function mapStateToProps(state) {
     //console.log('mystate', state)
     
-    return {
+    return {...state,
          counter: state.reducer1.counter
     }
 }
@@ -47,12 +47,20 @@ function mapStateToProps(state) {
 } 
      */
 export const myLogger=(store)=>(next)=>(action)=>{
-    console.log('My state from mylogger', action)
+    if (action.type =='DECREASE_COUNTER' && action.payload < 0){
+action.payload=0
+    }
+    console.log('My state from mylogger', action , "My counter="+action.payload)
     next(action)
   
     }
  
-    
+   /*  export const myMiddlewarefunction=(store)=>(next)=>(action)=>{
+        console.log('My state from mylogger', action)
+        next(action)
+      
+        }
+    */     
 function mapDispatchToProps(dispatch) {
     
     return {
