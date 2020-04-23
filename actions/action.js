@@ -39,12 +39,12 @@ export const decreaseaction = value => (
 
     }
 )
-
-export const resetaction = (data) => (
+export const resetaction = () => (
+/* export const resetaction = (data) => ( */
     {
         type: 'RESET',
         payload: 0,
-        data: data
+ /*        data: data */
 
     }
 
@@ -52,12 +52,13 @@ export const resetaction = (data) => (
 
 export const getMydata = () => {
     return dispatch => {
-      dispatch(resetaction());
+      //dispatch(resetaction());
       return fetch('https://gitlab.com/gHashTag/react-native-init-data/raw/master/db.json')
         .then(handleErrors)
         .then(res => res.json())
         .then(json => {
           dispatch(resetaction(json));
+          console.log('My data from GETDATA', json)
           return json;
         })
         .catch(error => console.log('url doesnt responce'));

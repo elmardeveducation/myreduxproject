@@ -23,9 +23,12 @@ class CounterApp extends Component {
                     <TouchableOpacity onPress={() => this.props.decreaseCounter(this.props.counter)}>
                         <Text style={{ fontSize: 20 }}>Decrease</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.getmydata(this.props.data)}>
+                    <TouchableOpacity onPress={() => this.props.resetaction()}>
                         <Text style={{ fontSize: 20 }}>Reset</Text>
                     </TouchableOpacity>
+                  {/*   <TouchableOpacity onPress={() => this.props.getmydata(this.props.data)}>
+                        <Text style={{ fontSize: 20 }}>Reset</Text>
+                    </TouchableOpacity> */}
                 </View>
             </View>
         );
@@ -67,7 +70,9 @@ function mapDispatchToProps(dispatch) {
         
         increaseCounter: (counter) => dispatch(increaseaction(counter)),
         decreaseCounter: (counter) => dispatch(decreaseaction(counter)),
-        getmydata: (data) => dispatch(getMydata(data)) 
+  /*       getmydata: () => dispatch(getMydata())  */
+  resetaction: ()=> dispatch(resetaction())
+
     }
 }
 

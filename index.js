@@ -26,7 +26,8 @@ import { resetaction } from './actions/action';
 //how to create store
 // Attention for REDUX0LOGGER: createLogger must be the last middleware in chain, otherwise it will log thunk and promise, not actual actions (#20).
 //export const mystore = createStore(reducer, applyMiddleware(thunk, myLogger, createLogger()));
-export const mystore = createStore(reducer, applyMiddleware(thunk, createLogger() ));
+/* export const mystore = createStore(reducer, applyMiddleware(thunk, createLogger())); */
+export const mystore = createStore(reducer);
 
 console.log(mystore.getState())
 //how to create store
