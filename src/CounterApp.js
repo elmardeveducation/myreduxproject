@@ -46,12 +46,12 @@ function mapStateToProps(state) {
     next (action)
 } 
      */
-export const myLogger=(store)=>(next)=>(action)=>{
+/* export const myLogger=(store)=>(next)=>(action)=>{
     console.log('My state from mylogger', action)
     next(action)
   
     }
- 
+ */ 
     
 function mapDispatchToProps(dispatch) {
     
