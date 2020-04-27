@@ -6,6 +6,8 @@ import {
   resetaction,
   getMydata,
   increaseactionAsync,
+  increaseactionPromise,
+  myAction,
 } from '../actions/action';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
@@ -29,12 +31,13 @@ class CounterApp extends Component {
             onPress={() => this.props.decreaseCounter(this.props.counter)}>
             <Text style={{fontSize: 20}}>Decrease</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => this.props.resetaction()}>
+          {/* <TouchableOpacity onPress={() => this.props.resetaction()}>
             <Text style={{fontSize: 20}}>Reset</Text>
           </TouchableOpacity>
-          {/*   <TouchableOpacity onPress={() => this.props.getmydata(this.props.data)}>
-                        <Text style={{ fontSize: 20 }}>Reset</Text>
-                    </TouchableOpacity> */}
+           */}
+          <TouchableOpacity onPress={() => this.props.resetaction()}>
+            <Text style={{fontSize: 20}}>Reset </Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -44,7 +47,11 @@ class CounterApp extends Component {
 function mapStateToProps(state) {
   //console.log('mystate', state)
 
-  return {...state, counter: state.reducer1.counter, data: state.reducer1.data};
+  return {
+    ...state,
+    counter: state.reducer1.counter,
+    data: state.reducer1.data,
+  };
 }
 /* export const myLogger=(store)=>(next)=>(action)=>{
     console.log('Logged action', action)
@@ -69,10 +76,10 @@ export const myLogger = store => next => action => {
 
 function mapDispatchToProps(dispatch) {
   return {
-    increaseCounter: counter => dispatch(increaseactionAsync(counter)),
+    increaseCounter: counter => dispatch(myAction(counter)),
     decreaseCounter: counter => dispatch(decreaseaction(counter)),
     /*       getmydata: () => dispatch(getMydata())  */
-    resetaction: () => dispatch(resetaction()),
+    resetaction: () => dispatch(getMydata()),
   };
 }
 

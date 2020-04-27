@@ -1,10 +1,18 @@
 import {myLogger} from '../src/CounterApp';
-export const increaseaction = value => ({
+/* export const increaseaction = value => {
+  return dispatch => {
+    setTimeout(() => {
+      dispatch({type: 'INCREASE_COUNTER', payload: value + 1});
+    }, 2000);
+  };
+};
+ */
+/* export const increaseaction = value => ({
   type: 'INCREASE_COUNTER',
   payload: value + 1,
 });
-
-//function for dispatch from CounterApp increase with timeout
+ */
+/* //function for dispatch from CounterApp increase with timeout
 
 export const increaseactionAsync = value => {
   return dispatch => {
@@ -14,39 +22,46 @@ export const increaseactionAsync = value => {
     }, 4000);
   };
 };
+//function for dispatch from CounterApp increase with timeout */
 
 //  export function increaseaction1(value){
 
 //     return {type: 'INCREASE COUNTER', payload: value}
 //  }
-/* export function increaseaction(value){
-   const payload = new Promise(
-       (resolve, reject) => { setTimeout(resolve(value + 1), 2000) }
-   )
+/* export const increaseactionPromise = value => {
+  return dispatch => {
+    dispatch(
+      new Promise((resolve, reject) => {
+        setTimeout => {
+          resolve(increaseaction(value)), 2000;
+        };
+      }),
+    );
+  };
+}; */
 
-   return  { type: 'INCREASE COUNTER', payload };
-   
-} */
-
-/* export function increaseaction(value) {
-return
-    {setTimeout(
-            {type: 'INCREASE COUNTER',
-                payload: value + 1}, 2000)
-    }
-
-    } */
+export const myAction = value => {
+  return {
+    type: 'INCREASE_COUNTER',
+    payload: new Promise((resolve, reject) =>
+      setTimeout(() => {
+        resolve(value + 1);
+      }, 2000),
+    ),
+  };
+};
 
 export const decreaseaction = value => ({
   type: 'DECREASE_COUNTER',
   payload: value - 1,
 });
-export const resetaction = () =>
-  /* export const resetaction = (data) => ( */
+
+export const resetaction = data =>
+  // export const resetaction = (data) => (
   ({
     type: 'RESET',
     payload: 0,
-    /*        data: data */
+    data: data,
   });
 
 export const getMydata = () => {
@@ -67,9 +82,9 @@ export const getMydata = () => {
 };
 
 // Handle HTTP errors since fetch won't.
-function handleErrors(response) {
+export const handleErrors = response => {
   if (!response.ok) {
     throw Error(response.statusText);
   }
   return response;
-}
+};
