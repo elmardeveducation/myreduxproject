@@ -46,7 +46,7 @@ function mapStateToProps(state) {
     next (action)
 } 
      */
-export const myLogger=(store)=>(next)=>(action)=>{
+export const myLogger=(state)=>(next)=>(action)=>{
     if (action.type =='DECREASE_COUNTER' && action.payload < 0){
 action.payload=0
     }
