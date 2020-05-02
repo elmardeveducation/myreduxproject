@@ -8,9 +8,11 @@ import {
   increaseactionAsync,
   increaseactionPromise,
   myAction,
+  actionGetdata,
 } from '../actions/action';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
+import {myWorkerfunc} from '../saga/mysaga';
 
 class CounterApp extends Component {
   render() {
@@ -37,6 +39,10 @@ class CounterApp extends Component {
            */}
           <TouchableOpacity onPress={() => this.props.resetaction()}>
             <Text style={{fontSize: 20}}>Reset </Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity onPress={() => this.props.actionGetdata()}>
+            <Text style={{fontSize: 20}}>Get data </Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -80,6 +86,7 @@ function mapDispatchToProps(dispatch) {
     decreaseCounter: counter => dispatch(decreaseaction(counter)),
     /*       getmydata: () => dispatch(getMydata())  */
     resetaction: () => dispatch(getMydata()),
+    actionGetdata: () => dispatch(actionGetdata()),
   };
 }
 
