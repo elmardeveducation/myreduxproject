@@ -1,17 +1,13 @@
-import { myLogger } from '../src/CounterApp'
-/*export const increaseaction = (value) => (
- 
-{
-     type: 'INCREASE_COUNTER',
-     payload: value + 1
- }
-  
- )*/
+import {myLogger} from '../src/CounterApp';
+export const increaseaction = value => ({
+  type: 'INCREASE_COUNTER',
+  payload: value + 1,
+});
 //  export function increaseaction1(value){
-    
-//     return {type: 'INCREASE COUNTER', payload: value}                              
+
+//     return {type: 'INCREASE COUNTER', payload: value}
 //  }
- export function increaseaction(value){
+/* export function increaseaction(value){
     const payload = new Promise(
         (resolve, reject) => { setTimeout(resolve(value + 1), 2000) }
     )
@@ -19,8 +15,8 @@ import { myLogger } from '../src/CounterApp'
     return  { type: 'INCREASE COUNTER', payload };
     
  }
-    
-    
+  */
+
 /* export function increaseaction(value) {
 return
     {setTimeout(
@@ -30,21 +26,12 @@ return
 
     } */
 
+export const decreaseaction = value => ({
+  type: 'DECREASE_COUNTER',
+  payload: value - 1,
+});
 
-
-export const decreaseaction = value => (
-    {
-        type: 'DECREASE_COUNTER',
-        payload: value - 1
-
-    }
-)
-
-export const resetaction = () => (
-    {
-        type: 'RESET',
-        payload: 0
-
-    }
-
-)
+export const resetaction = () => ({
+  type: 'RESET',
+  payload: 0,
+});
