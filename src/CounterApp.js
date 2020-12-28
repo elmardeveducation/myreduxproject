@@ -1,9 +1,15 @@
 import React, {Component} from 'react';
 
-import {increaseaction, decreaseaction, resetaction} from '../actions/action';
+import {
+  increaseaction,
+  decreaseaction,
+  resetaction,
+  incrementAsync,
+  myAction,
+} from '../actions/action';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
-
+import {mystore} from '../index';
 class CounterApp extends Component {
   render() {
     return (
@@ -39,22 +45,19 @@ function mapStateToProps(state) {
     counter: state.reducer1.counter,
   };
 }
-/* export const myLogger=(store)=>(next)=>(action)=>{
-    console.log('Logged action', action)
-    console.log ('mystate from myLogger', store.reducer1.getState())
-    next (action)
-} 
-     */
-/* export const myLogger=(state)=>{
-    console.log('My state from mylogger', mystore.getState())
-  
-    }
- */
+// export const myLogger = store => next => action => {
+//   console.log('Logged action', action);
+//   console.log('mystate from myLogger', mystore.getState());
+//   next(action);
+// };
+export const myLogger = state => {
+  console.log('My state from mylogger', mystore.getState());
+};
 
 function mapDispatchToProps(dispatch) {
   return {
-    increaseCounter: counter =>
-      dispatch({type: 'INCREASE_COUNTER', payload: counter + 1}),
+    increaseCounter: counter => dispatch(incrementAsync(counter)),
+    // increaseCounter: counter => incrementAsync(counter + 1),
     decreaseCounter: counter => dispatch(decreaseaction(counter)),
     resetCounter: () => dispatch(resetaction()),
   };

@@ -15,13 +15,14 @@ import {name as appName} from './app.json';
 //import all reducers from index.js in reducers folder
 import reducer from './reducers';
 import promise from 'redux-promise-middleware';
+import logger from 'redux-logger';
 
 //import all reducers from index.js in reducers folder
 
 //how to create store
-// export const mystore = createStore(reducer, applyMiddleware(thunk, myLogger()));
-export const mystore = createStore(reducer);
-console.log(mystore.getState());
+export const mystore = createStore(reducer, applyMiddleware(thunk));
+//export const mystore = createStore(reducer);
+//console.log(mystore.getState());
 
 //how to create store
 
